@@ -10,7 +10,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default:
+        primary:
           "bg-primary text-primary-foreground hover:bg-primary-600 focus:bg-primary focus:border focus:border-primary-300 focus:border-3 active:bg-primary active:border-none active:outline active:outline-1 active:outline-primary active:outline-offset-1",
         outline:
           "border border-primary text-primary hover:bg-primary-50 focus:bg-primary-50 focus:border-primary-300 focus:border-3 active:border active:border-primary active:outline active:outline-1 active:outline-primary active:outline-offset-1 disabled:border-gray-400",
@@ -24,15 +24,14 @@ const buttonVariants = cva(
         info: "bg-info text-info-foreground hover:bg-info-600 focus:bg-info focus:border focus:border-info-400 focus:border-3 active:bg-info active:border-none active:outline active:outline-1 active:outline-info active:outline-offset-1",
       },
       size: {
-        default: "h-8 p-2",
-        sm: "h-6 p-1 text-xs",
-        lg: "h-10 rounded-md p-4",
-        icon: "h-8 w-8 p-0 m-0",
+        md: "h-8 p-2",
+        sm: "h-6 p-1",
+        lg: "h-10 rounded-md p-4 text-sm",
       },
     },
     defaultVariants: {
-      variant: "default",
-      size: "default",
+      variant: "primary",
+      size: "md",
     },
   },
 );

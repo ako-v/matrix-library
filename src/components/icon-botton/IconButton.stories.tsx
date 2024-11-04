@@ -34,7 +34,7 @@ export const Variants: Story = {
     loading: false,
   },
   render: props => (
-    <div className="grid grid-cols-2 lg:grid-cols-7 gap-4 w-full lg:min-w-[600px]">
+    <div className="grid grid-cols-4 lg:grid-cols-7 gap-4 w-full lg:min-w-[600px]">
       <IconButton {...props} />
       <IconButton {...props} variant="toolbar" />
       <IconButton {...props} variant="form" />
@@ -55,7 +55,7 @@ export const Large: Story = {
     loading: false,
   },
   render: props => (
-    <div className="grid grid-cols-2 lg:grid-cols-7 gap-4 w-full lg:min-w-[600px]">
+    <div className="grid grid-cols-4 lg:grid-cols-7 gap-4 w-full lg:min-w-[600px]">
       <IconButton {...props} />
       <IconButton {...props} variant="toolbar" />
       <IconButton {...props} variant="form" />
@@ -76,7 +76,7 @@ export const Small: Story = {
     loading: false,
   },
   render: props => (
-    <div className="grid grid-cols-2 lg:grid-cols-7 gap-4 w-full lg:min-w-[600px]">
+    <div className="grid grid-cols-4 lg:grid-cols-7 gap-4 w-full lg:min-w-[600px]">
       <IconButton {...props} />
       <IconButton {...props} variant="toolbar" />
       <IconButton {...props} variant="form" />
