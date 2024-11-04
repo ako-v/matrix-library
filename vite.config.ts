@@ -14,10 +14,11 @@ function getComponentName(entryName: string): string {
 export default defineConfig({
   plugins: [
     react({
-      jsxRuntime: "classic",
+      jsxRuntime: "automatic",
     }),
     dts({
-      include: ["src/**/*"],
+      include: ["src/**/*.ts", "src/**/*.tsx"],
+      exclude: ["src/**/*.stories.ts", "src/**/*.stories.tsx"],
     }),
   ],
   build: {
@@ -30,7 +31,7 @@ export default defineConfig({
       },
     },
     rollupOptions: {
-      external: [...Object.keys(peerDependencies), ...Object.keys(dependencies)],
+      external: [...Object.keys(peerDependencies), ...Object.keys(dependencies), "react/jsx-runtime"],
       output: { preserveModules: true, exports: "named" },
     },
     target: "esnext",
