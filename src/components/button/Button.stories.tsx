@@ -22,12 +22,21 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     variant: "default",
+    children: "Button",
+    asChild: false,
+    loading: false,
+  },
+};
+
+export const Variants: Story = {
+  args: {
+    variant: "default",
     children: "Add New",
 
     asChild: false,
     loading: false,
   },
-  render: (props) => (
+  render: props => (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full lg:min-w-[600px]">
       <Button {...props} startIcon={<PlusIcon />} endIcon={<ChevronDownIcon className="w-4.5 h-4.5" />} />
       <Button {...props} variant="outline" startIcon={<PlusIcon />} endIcon={<ChevronDownIcon />} />

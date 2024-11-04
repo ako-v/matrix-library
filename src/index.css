@@ -188,3 +188,10 @@
     --chart-5: 340 75% 55%;
   }
 }
+
+@layer utilities {
+  .h-dscreen {
+    height: 100vh;
+    height: 100dvh;
+  }
+}

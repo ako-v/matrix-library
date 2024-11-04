@@ -8,7 +8,9 @@ export default {
         2.5: "0.625rem",
         3.5: "0.875rem",
         4.5: "1.125rem",
+        5.5: "1.375rem",
         7.5: "1.875rem",
+        8.5: "2.125rem",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -237,15 +239,5 @@ export default {
       },
     },
   },
-  plugins: [
-    require("tailwindcss-animate"),
-    function ({ addUtilities }) {
-      addUtilities({
-        ".h-dscreen": {
-          height: "100vh",
-          height: "100dvh",
-        },
-      });
-    },
-  ],
+  plugins: [require("tailwindcss-animate")],
 };
