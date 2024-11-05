@@ -1,4 +1,4 @@
-import { StoryObj } from "@storybook/react/*";
+import { Meta, StoryObj } from "@storybook/react/*";
 
 import { Button } from "../button/Button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./Card";
@@ -11,7 +11,7 @@ const meta = {
   },
   tags: ["autodocs"],
   argTypes: {},
-};
+} satisfies Meta<typeof Card>;
 
 type Story = StoryObj<typeof meta>;
 

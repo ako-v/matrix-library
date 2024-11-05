@@ -7,13 +7,13 @@ const withCustomClass: Decorator = Story => (
   </div>
 );
 
-const meta: Meta = {
+const meta = {
   title: "Primitives/Collapsible",
   component: Collapsible,
   decorators: [withCustomClass],
   tags: ["autodocs"],
   argTypes: {},
-};
+} satisfies Meta<typeof Collapsible>;
 
 type Story = StoryObj<typeof meta>;
 

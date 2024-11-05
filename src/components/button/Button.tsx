@@ -11,17 +11,17 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-primary text-primary-foreground hover:bg-primary-600 focus:bg-primary focus:border focus:border-primary-300 focus:border-3 active:bg-primary active:border-none active:outline active:outline-1 active:outline-primary active:outline-offset-1",
+          "bg-primary text-primary-foreground hover:bg-primary-600 focus:bg-primary focus:border-primary focus:ring focus:ring-primary-300 active:bg-primary active:ring active:ring-1 active:ring-primary active:ring-offset-2",
         outline:
-          "border border-primary text-primary hover:bg-primary-50 focus:bg-primary-50 focus:border-primary-300 focus:border-3 active:border active:border-primary active:outline active:outline-1 active:outline-primary active:outline-offset-1 disabled:border-gray-400",
+          "border border-primary text-primary hover:bg-primary-50 focus:bg-primary-50 focus:border-primary-100 focus:ring focus:ring-primary-100 active:bg-primary-50 active:border-primary active:ring-1 active:ring-primary active:ring-offset-2 disabled:border-gray-400",
         text: "text-text [&>svg]:text-primary border border-transparent hover:bg-primary-50 focus:border focus:border-primary-300 focus:border-3 active:border-none active:outline-primary active:outline active:outline-1 disabled:text-text-300 [&>svg]:disabled:text-text-300 disabled:bg-transparent",
         danger:
-          "bg-danger text-danger-foreground hover:bg-danger-600 focus:bg-danger focus:border focus:border-danger-400 focus:border-3 active:bg-danger active:border-none active:outline active:outline-1 active:outline-danger active:outline-offset-1",
+          "bg-danger text-danger-foreground hover:bg-danger-600 focus:bg-danger focus:ring focus:ring-danger-400 active:bg-danger active:ring-1 active:ring-danger active:ring-offset-2",
         warning:
-          "bg-warning text-warning-foreground hover:bg-warning-600 focus:bg-warning focus:border focus:border-warning-400 focus:border-3 active:bg-warning active:border-none active:outline active:outline-1 active:outline-warning active:outline-offset-1",
+          "bg-warning text-warning-foreground hover:bg-warning-600 focus:bg-warning focus:ring focus:ring-warning-400 active:bg-warning active:ring-1 active:ring-warning active:ring-offset-2",
         success:
-          "bg-success text-success-foreground hover:bg-success-600 focus:bg-success focus:border focus:border-success-400 focus:border-3 active:bg-success active:border-none active:outline active:outline-1 active:outline-success active:outline-offset-1",
-        info: "bg-info text-info-foreground hover:bg-info-600 focus:bg-info focus:border focus:border-info-400 focus:border-3 active:bg-info active:border-none active:outline active:outline-1 active:outline-info active:outline-offset-1",
+          "bg-success text-success-foreground hover:bg-success-600 focus:bg-success focus:ring focus:ring-success-400 active:bg-success active:ring-1 active:ring-success active:ring-offset-2",
+        info: "bg-info text-info-foreground hover:bg-info-600 focus:bg-info focus:ring focus:ring-info-400 active:bg-info active:ring-1 active:ring-info active:ring-offset-2",
       },
       size: {
         md: "h-8 p-2",
