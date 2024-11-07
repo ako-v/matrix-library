@@ -79,7 +79,7 @@ const FormControl = React.forwardRef<React.ElementRef<typeof Slot>, React.Compon
       id={formItemId}
       aria-describedby={!error ? `${formDescriptionId}` : `${formDescriptionId} ${formMessageId}`}
       aria-invalid={!!error}
-      className={cn(className, error && "border-danger focus-visible:border-danger")}
+      className={cn(className, error && "border-danger hover:border-danger focus-visible:border-danger")}
       {...props}
     />
   );

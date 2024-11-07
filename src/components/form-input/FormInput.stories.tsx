@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react/*";
 import FormInput from "./FormInput";
 import { useForm } from "react-hook-form";
-import { Form } from "../ui/form";
+import { Form } from "../form/Form";
 import { Button } from "../button/Button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";

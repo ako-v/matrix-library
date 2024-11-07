@@ -1,4 +1,4 @@
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "../form/Form";
 import { SlotProps } from "@radix-ui/react-slot";
 import { Control, ControllerProps, FieldPath, FieldValues } from "react-hook-form";
 import { TextField, TextFieldProps } from "../text-field/TextField";
