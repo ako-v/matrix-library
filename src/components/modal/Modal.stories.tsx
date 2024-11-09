@@ -6,13 +6,22 @@ import { Button } from "../button/Button";
 const meta = {
   title: "Components/Modal",
   component: Modal,
-  parameters: {
-    controls: { hideNoControlsWarning: true },
-  },
   tags: ["autodocs"],
+  argTypes: {
+    slotProps: {
+      table: {
+        disable: true,
+      },
+    },
+    title: {
+      table: {
+        disable: true,
+      },
+    },
+  },
 } satisfies Meta<typeof Modal>;
 
-export const Default: StoryFn<typeof meta> = () => {
+export const Default: StoryFn = () => {
   const [open, setOpen] = React.useState(false);
   return (
     <>
