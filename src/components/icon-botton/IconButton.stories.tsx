@@ -5,7 +5,7 @@ import { IconButton } from "./IconButton";
 import { PlusIcon } from "../Icons/PlusIcon";
 
 const meta = {
-  title: "Primitives/IconButton",
+  title: "Components/IconButton",
   component: IconButton,
   parameters: {
     layout: "centered",

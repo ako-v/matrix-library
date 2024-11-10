@@ -1,5 +1,6 @@
 import { Meta } from "@storybook/react/*";
-import { Toaster } from "./Toaster";
+
+import { Toaster } from "./Toast";
 import { toast } from "./use-toast";
 import { Button } from "../button/Button";
 

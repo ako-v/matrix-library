@@ -8,7 +8,7 @@ const withCustomClass: Decorator = Story => (
 );
 
 const meta = {
-  title: "Primitives/Collapsible",
+  title: "Components/Collapsible",
   component: Collapsible,
   decorators: [withCustomClass],
   tags: ["autodocs"],

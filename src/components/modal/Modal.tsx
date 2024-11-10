@@ -49,16 +49,18 @@ ModalDescription.displayName = DialogPrimitive.Description.displayName;
 
 interface ModalProps extends DialogPrimitive.DialogProps, Omit<DialogPrimitive.DialogContentProps, "title"> {
   title: React.ReactNode;
+  fullScreen?: boolean;
   slotProps?: {
-    title?: React.ComponentProps<typeof ModalTitle>;
-    close?: React.ComponentProps<typeof ModalClose>;
+    title?: DialogPrimitive.DialogTitleProps;
+    close?: DialogPrimitive.DialogCloseProps;
     header?: React.ComponentProps<typeof ModalHeader>;
-    portal?: React.ComponentProps<typeof ModalPortal>;
+    portal?: DialogPrimitive.DialogPortalProps;
+    divider?: React.ComponentProps<"hr">;
   };
 }
 
 const Modal = React.forwardRef<React.ElementRef<typeof DialogPrimitive.Content>, ModalProps>((props, ref) => {
-  const { title, className, children, open, onOpenChange, defaultOpen, modal, slotProps, ...restProps } = props;
+  const { title, className, children, fullScreen, open, onOpenChange, defaultOpen, modal, slotProps, ...restProps } = props;
 
   return (
     <DialogPrimitive.Root defaultOpen={defaultOpen} modal={modal} open={open} onOpenChange={onOpenChange}>
@@ -67,7 +69,8 @@ const Modal = React.forwardRef<React.ElementRef<typeof DialogPrimitive.Content>,
         <DialogPrimitive.Content
           ref={ref}
           className={cn(
-            "fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 grid gap-2 w-full max-w-lg p-4 border bg-background shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
+            "fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 flex flex-col gap-2 w-full max-w-lg p-4 border bg-background shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
+            fullScreen ? "w-screen h-screen" : "max-w-lg",
             className,
           )}
           {...restProps}
@@ -89,7 +92,10 @@ const Modal = React.forwardRef<React.ElementRef<typeof DialogPrimitive.Content>,
             </ModalClose>
           </ModalHeader>
           {/* Divider: the padding and margin is because of a bug in chrome causes the border to be shown with more height than expected */}
-          <hr className="w-full border-muted -mt-[1px] pb-2" />
+          <hr
+            {...(slotProps?.divider ?? {})}
+            className={cn("w-full border-muted -mt-[1px] pb-2", fullScreen && "w-screen -mx-4", slotProps?.divider?.className)}
+          />
           {children}
         </DialogPrimitive.Content>
       </ModalPortal>

@@ -7,7 +7,7 @@ import { PlusIcon } from "../Icons/PlusIcon";
 import { ChevronDownIcon } from "../Icons/ChevronDownIcon";
 
 const meta = {
-  title: "Primitives/Button",
+  title: "Components/Button",
   component: Button,
   parameters: {
     layout: "centered",
