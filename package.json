@@ -1,5 +1,5 @@
 {
-  "name": "ui-library",
+  "name": "matrix-library",
   "description": "UI Library for Linahl",
   "private": false,
   "version": "0.0.1",
@@ -8,6 +8,15 @@
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json",
+    "./dist/*": "./dist/*"
+  },
   "files": [
     "dist"
   ],
@@ -18,7 +27,7 @@
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "sb": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "prepare": "node .husky/install.mjs"
+    "prepare": "husky"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -83,7 +92,6 @@
     "vite": "^5.4.10",
     "vite-plugin-dts": "^4.3.0"
   },
-  "packageManager": "pnpm@9.4.0+sha512.f549b8a52c9d2b8536762f99c0722205efc5af913e77835dbccc3b0b0b2ca9e7dc8022b78062c17291c48e88749c70ce88eb5a74f1fa8c4bf5e18bb46c8bd83a",
   "eslintConfig": {
     "extends": [
       "plugin:storybook/recommended"

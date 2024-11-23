@@ -36,6 +36,19 @@ type DrawerContextValue = {
 
 const [DrawerProvider, useDrawerProvider] = createDrawerContext<DrawerContextValue>(DRAWER_NAME);
 
+/**
+ * Drawer component
+ * This is the wrapper component for Drawer content and main components
+ * @param {React.HTMLAttributes<HTMLDivElement>} props
+ * @param {boolean} open - Drawer open state
+ * @param {() => void} onClose - Drawer close handler
+ * @param {"left" | "right"} anchor - Drawer anchor position
+ * @param {number} width - Drawer width
+ * @param {React.ReactNode} children - Drawer children
+ * @param {boolean} asChild - Render as child component
+ * @param {number} mobileBreakpoint - Mobile breakpoint
+ * @returns {React.ReactElement}
+ */
 const Drawer = React.forwardRef<React.ElementRef<"div">, ScopedProps<DrawerProps>>((props, ref) => {
   const { asChild, anchor = "right", children, open, width = 240, className, onClose, __scopeDrawer, mobileBreakpoint, ...restProps } = props;
   const Comp = asChild ? Slot : "div";
@@ -55,10 +68,13 @@ const Drawer = React.forwardRef<React.ElementRef<"div">, ScopedProps<DrawerProps
   }, []);
 
   const isMobile = React.useMemo(() => {
-    if (mobileBreakpoint) {
-      return !global?.window?.matchMedia?.(`(min-width: ${mobileBreakpoint})`)?.matches;
+    if (window !== undefined) {
+      if (mobileBreakpoint) {
+        return !window?.matchMedia?.(`(min-width: ${mobileBreakpoint})`)?.matches;
+      }
+      return !window?.matchMedia?.(`(min-width: ${defaultTheme.screens.md})`)?.matches;
     }
-    return !global?.window?.matchMedia?.(`(min-width: ${defaultTheme.screens.md})`)?.matches;
+    return false;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mobileBreakpoint, resized]);
 
@@ -79,6 +95,19 @@ interface DrawerMainProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const DRAWER_MAIN_NAME = "DrawerMain";
 
+/**
+ * DrawerMain component
+ * This is the main container for the tree that should be shown always
+ * @param {React.HTMLAttributes<HTMLDivElement>} props
+ * @param {boolean} asChild - Render as child component
+ * @property {React.ReactNode} children - DrawerMain children
+ * @property {string} className - DrawerMain class name
+ * @property {React.CSSProperties} style - DrawerMain style
+ * @property {ScopedProps<DrawerMainProps>} __scopeDrawer - DrawerMain scope
+ * @property {React.Ref<HTMLDivElement>} ref - DrawerMain ref
+ * @property {React.HTMLAttributes<HTMLDivElement>} props - DrawerMain props
+ * @returns {React.ReactElement}
+ */
 const DrawerMain = React.forwardRef<HTMLDivElement, ScopedProps<DrawerMainProps>>(
   ({ asChild, children, className, style, __scopeDrawer, ...props }, ref) => {
     const Comp = asChild ? Slot : "div";
@@ -112,6 +141,17 @@ type DrawerContentProps = {
 
 const DRAWER_CONTENT_NAME = "DrawerContent";
 
+/**
+ * DrawerContent component
+ * This is the content container for the tree that should be shown when the drawer is open
+ * @param {React.HTMLAttributes<HTMLDivElement>} props
+ * @param {React.ReactNode} children - DrawerContent children
+ * @param {React.ReactNode} title - DrawerContent title
+ * @property {ScopedProps<DrawerContentProps>} __scopeDrawer - DrawerContent scope
+ * @property {React.Ref<HTMLDivElement>} ref - DrawerContent ref
+ * @property {React.HTMLAttributes<HTMLDivElement>} props - DrawerContent props
+ * @returns {React.ReactElement}
+ */
 const DrawerContent = React.forwardRef<HTMLDivElement, ScopedProps<DrawerContentProps>>(({ children, title, __scopeDrawer }, ref) => {
   const { anchor, open, width, onClose, isMobile } = useDrawerProvider(DRAWER_CONTENT_NAME, __scopeDrawer);
 
