@@ -1,15 +1,15 @@
 import React from "react";
+import { DateRange } from "react-day-picker";
 import { Meta, StoryObj } from "@storybook/react/*";
 
-import { DatePicker } from "./DatePicker";
+import { DesktopDateRangePicker } from "./DesktopDateRangePicker";
 
-const meta: Meta<typeof DatePicker> = {
-  title: "Components/DatePicker",
-  component: DatePicker,
+const meta: Meta<typeof DesktopDateRangePicker> = {
+  title: "Components/DesktopDateRangePicker",
+  component: DesktopDateRangePicker,
   tags: ["autodocs"],
   args: {
     className: "w-72",
-    closeOnSelect: true,
   },
   argTypes: {
     selected: {
@@ -28,8 +28,8 @@ const meta: Meta<typeof DatePicker> = {
 export const Default: StoryObj<typeof meta> = {
   render: args => {
     const Component = () => {
-      const [selected, setSelected] = React.useState<Date | undefined>(undefined);
-      return <DatePicker {...args} selected={selected} onSelect={day => setSelected(day)} />;
+      const [selected, setSelected] = React.useState<DateRange | undefined>(undefined);
+      return <DesktopDateRangePicker {...args} selected={selected} onSelect={setSelected} />;
     };
     return <Component />;
   },

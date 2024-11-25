@@ -1,69 +1,34 @@
-"use client";
+import React from "react";
+import { DesktopDatePicker, DesktopDatePickerProps } from "./DesktopDatePicker";
+import { MobileDatePicker, MobileDatePickerProps } from "./MobileDatePicker";
+import defaultTheme from "tailwindcss/defaultTheme";
 
-import * as React from "react";
-import { format } from "date-fns";
-import { Calendar as CalendarIcon } from "lucide-react";
-import { PropsBase, PropsSingle, DayEventHandler } from "react-day-picker";
+type DatePickerProps = DesktopDatePickerProps & MobileDatePickerProps & {};
 
-import { cn } from "../../lib/utils";
-import { Calendar } from "./calendar";
-import { Button } from "../button/Button";
-import { Popover, PopoverContent, PopoverTrigger } from "../popover/Popover";
+const DatePicker: React.FC<DatePickerProps> = props => {
+  // re render to show proper modal on resize
+  const [windowSize, setWindowSize] = React.useState(0);
+  React.useEffect(() => {
+    const observer = new ResizeObserver(() => {
+      setWindowSize(window.innerWidth);
+    });
 
-type DatePickerProps = PropsBase &
-  Omit<PropsSingle, "mode"> & {
-    formatStr?: string;
-    placeholder?: string;
-    calendarClassName?: string;
-    selected?: Date;
-    required?: boolean;
-    closeOnSelect?: boolean;
-  };
+    observer.observe(document.documentElement);
 
-const DatePicker: React.FC<DatePickerProps> = ({
-  formatStr,
-  selected,
-  placeholder,
-  className,
-  calendarClassName,
-  closeOnSelect,
-  onDayClick,
-  ...props
-}) => {
-  const [isOpen, setIsOpen] = React.useState(false);
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
-  const handleDayClick: DayEventHandler<React.MouseEvent<Element, MouseEvent>> = (date, modifiers, e) => {
-    onDayClick?.(date, modifiers, e);
-    if (closeOnSelect) setIsOpen(false);
-  };
+  const isMobile = React.useMemo(() => {
+    if (window !== undefined) {
+      return window?.matchMedia?.(`(max-width: ${defaultTheme.screens.md})`)?.matches;
+    }
+    return false;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [windowSize]);
 
-  return (
-    <Popover open={isOpen} onOpenChange={setIsOpen}>
-      <PopoverTrigger asChild>
-        <Button
-          variant={"outline"}
-          className={cn(
-            "border-gray-300 text-text focus:ring-0 active:ring-transparent justify-start",
-            !selected && "text-muted-foreground",
-            className,
-          )}
-        >
-          {selected ? format(selected, formatStr ?? "yyyy/MM/dd") : <span>{placeholder ?? "Pick a date"}</span>}
-          <CalendarIcon className="mr-2 h-4 w-4 ms-auto" />
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent className="w-auto p-0">
-        <Calendar
-          {...props}
-          mode="single"
-          selected={selected}
-          captionLayout="dropdown-years"
-          className={calendarClassName}
-          onDayClick={handleDayClick}
-        />
-      </PopoverContent>
-    </Popover>
-  );
+  return isMobile ? <MobileDatePicker {...props} /> : <DesktopDatePicker {...props} />;
 };
 
-export default DatePicker;
+export { DatePicker, type DatePickerProps };

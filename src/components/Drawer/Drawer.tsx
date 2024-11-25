@@ -54,10 +54,10 @@ const Drawer = React.forwardRef<React.ElementRef<"div">, ScopedProps<DrawerProps
   const Comp = asChild ? Slot : "div";
 
   // re render to show proper modal on resize
-  const [resized, setResized] = React.useState(false);
+  const [windowSize, setWindowSize] = React.useState(0);
   React.useEffect(() => {
     const observer = new ResizeObserver(() => {
-      setResized(prev => !prev);
+      setWindowSize(window.innerWidth);
     });
 
     observer.observe(document.documentElement);
@@ -76,7 +76,7 @@ const Drawer = React.forwardRef<React.ElementRef<"div">, ScopedProps<DrawerProps
     }
     return false;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mobileBreakpoint, resized]);
+  }, [mobileBreakpoint, windowSize]);
 
   return (
     <Comp ref={ref} className={cn("flex", className)} {...restProps}>

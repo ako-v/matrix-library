@@ -1,12 +1,12 @@
 /* eslint-disable camelcase */
 import * as React from "react";
 import { Chevron, DayPicker, DayPickerProps } from "react-day-picker";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@radix-ui/react-collapsible";
 
 import { cn } from "../../lib/utils";
+import { Button } from "../button/Button";
 import { ChevronLeftIcon } from "../Icons/ChevronLeftIcon";
 import { ChevronRightIcon } from "../Icons/ChevronRightIcon";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@radix-ui/react-collapsible";
-import { Button } from "../button/Button";
 import { ChevronDownIcon } from "../Icons/ChevronDownIcon";
 
 export type CalendarProps = DayPickerProps & {};
@@ -28,31 +28,39 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
-      className={cn("p-3 relative w-full max-w-sm group/root", className)}
+      className={cn("p-3 relative w-full max-w-sm group/root z-10", className)}
       classNames={{
-        months: "flex flex-col sm:flex-row sm:space-x-4 sm:space-y-0",
-        month: "space-y-4 peer",
+        months: cn("relative flex flex-col", props.mode === "range" && "md:flex-row md:space-x-4 md:space-y-2"),
+        month: "space-y-4 peer md:flex-1",
         month_caption: "flex justify-center pt-1 relative items-center",
         dropdowns: "flex gap-2",
         caption_label: "text-sm font-bold",
-        nav: "space-x-1 flex items-center group-has-[[data-state=open]]/root:hidden",
-        button_previous: "h-7 w-7 bg-transparent p-0 text-primary hover:opacity-100 absolute left-3 top-3 z-10",
-        button_next: "h-7 w-7 bg-transparent p-0 text-primary hover:opacity-100 absolute right-3 top-3 z-10",
+        nav: cn("space-x-1 flex items-center group-has-[[data-state=open]]/root:hidden", props.mode !== "range" && "relative"),
+        button_previous: cn(
+          "h-7 w-7 bg-transparent p-0 text-primary hover:opacity-100 absolute left-2 top-0 md:top-0.5 z-10",
+          props.mode === "range" && "md:left-8 md:top-2",
+        ),
+        button_next: cn(
+          "h-7 w-7 bg-transparent p-0 text-primary hover:opacity-100 absolute right-2 top-0 md:top-0.5 z-10",
+          props.mode === "range" && "md:top-2",
+        ),
         month_grid: cn("w-full border-collapse space-y-1"),
-        weekdays: "grid grid-cols-7",
+        weekdays: "grid grid-cols-7 justify-items-center",
         weekday: "text-text rounded-md w-8 font-bold text-sm",
         week: "mt-2 h-11 grid grid-cols-7 items-center",
-        day: "relative p-0 text-center text-sm h-11 w-11 md:w-9 md:h-9 ",
-        day_button: "w-full h-full p-0",
-        range_start: "bg-secondary/50 rounded-l-full rtl:rounded-r-full rtl:rounded-l-none",
-        range_end: "bg-secondary/50 rounded-r-full rtl:rounded-l-full rtl:rounded-r-none",
+        day: "relative p-0 text-center text-sm h-11 min-w-11 md:min-w-9 md:h-9",
+        day_button: "w-11 md:w-9 h-full p-0 text-sm",
+        range_start:
+          "before:block before:absolute before:-z-10 before:content-[''] before:w-1/2 before:end-0 before:h-full before:bg-secondary/50 after:w-0",
+        range_end:
+          "after:block after:absolute after:top-0 after:-z-10 after:content-[''] after:w-1/2 after:start-0 after:h-full after:bg-secondary/50 before:w-0",
         selected:
-          "[&>button]:bg-secondary [&>button]:rounded-full text-text font-bold [&>button]:hover:bg-secondary [&>button]:hover:text-text [&>button]:focus:bg-secondary [&>button]:focus:text-text",
-        today: "text-primary font-bold",
+          "[&>button]:bg-secondary [&>button]:rounded-full text-text font-bold [&>button]:hover:bg-secondary [&>button]:hover:text-text [&>button]:focus:bg-secondary [&>button]:focus:text-text [&>button]:text-xs",
+        today: "text-primary font-bold [&>button]:text-xs",
         outside:
           "day-outside text-muted-foreground opacity-50 aria-selected:bg-accent/50 aria-selected:text-muted-foreground aria-selected:opacity-30",
         disabled: "text-muted-foreground opacity-50",
-        range_middle: "[&>button]:data-[selected='true']:bg-secondary/50 [&>button]:data-[selected='true']:rounded-none text-accent-foreground",
+        range_middle: "bg-secondary/50 [&>button]:data-[selected='true']:bg-secondary/0 data-[selected='true']:rounded-none text-accent-foreground",
         hidden: "invisible",
         ...classNames,
       }}
