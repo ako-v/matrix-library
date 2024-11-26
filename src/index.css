@@ -2,18 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 @font-face {
-  font-family: 'DMSans';
-  font-style: 'normal';
+  font-family: "DMSans";
+  font-style: "normal";
   font-weight: 100 900;
-  src: url(/fonts/DMSans.ttf) format('truetype');
+  src: url(/fonts/DMSans.ttf) format("truetype");
 }
 
 @layer base {
   :root {
-    
     --background: var(--gray-0);
     --foreground: var(--text-500);
     --card: var(--gray-0);
@@ -65,7 +62,6 @@
     --gray-100: 0 0% 94%;
     --gray-50: 0 0% 97%;
     --gray-0: 0 0% 100%;
-    
 
     --primary-800: 218 100% 23%;
     --primary-700: 218 100% 32%;
@@ -87,7 +83,7 @@
     --secondary-200: 150 79% 82%;
     --secondary-100: 150 77% 88%;
     --secondary-50: 149 84% 95%;
-    
+
     --danger-800: 0 69% 35%;
     --danger-700: 0 100% 32%;
     --danger-600: 0 54% 50%;
@@ -103,8 +99,7 @@
     --warning-400: 47 100% 72%;
     --warning-300: 47 100% 83%;
     --warning-200: 47 100% 90%;
-    
-    
+
     --success-800: 137 74% 25%;
     --success-700: 137 96% 29%;
     --success-600: 137 96% 29%;
@@ -153,11 +148,36 @@
     --turquoise-200: 172 90% 87%;
     --turquoise-100: 172 100% 96%;
 
-
     --shadow-card: 0px 2px 1px 0px rgba(0, 0, 0, 0.05), 0px 0px 1px 0px rgba(0, 0, 0, 0.251);
     /* --shadow-card: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12); */
 
     --drawer-width: 16rem;
+  }
+
+  /* Make scrollbar thinner */
+  /* width */
+
+  .thin-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* Track */
+  .thin-scrollbar::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #c9cacc;
+    border-radius: 10px;
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  .thin-scrollbar::-webkit-scrollbar-thumb {
+    background: #c9cacc;
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  .thin-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #dcddde;
   }
 
   .dark {
