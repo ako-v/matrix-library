@@ -90,4 +90,24 @@ export const Small: Story = {
   ),
 };
 
+export const OnDark: Story = {
+  args: {
+    variant: "primary",
+    children: "Add New",
+    asChild: false,
+    loading: false,
+  },
+  render: props => (
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full lg:min-w-[650px] bg-gray-400 p-4">
+      <Button {...props} variant="primaryOnDark" startIcon={<PlusIcon />} endIcon={<ChevronDownIcon className="w-4.5 h-4.5" />} />
+      <Button {...props} variant="outlineOnDark" startIcon={<PlusIcon />} endIcon={<ChevronDownIcon />} />
+      <Button {...props} variant="textOnDark" startIcon={<PlusIcon />} endIcon={<ChevronDownIcon />} />
+      <Button {...props} variant="danger" startIcon={<PlusIcon />} endIcon={<ChevronDownIcon />} />
+      <Button {...props} variant="warning" startIcon={<PlusIcon />} endIcon={<ChevronDownIcon />} />
+      <Button {...props} variant="success" startIcon={<PlusIcon />} endIcon={<ChevronDownIcon />} />
+      <Button {...props} variant="info" startIcon={<PlusIcon />} endIcon={<ChevronDownIcon />} />
+    </div>
+  ),
+};
+
 export default meta;
