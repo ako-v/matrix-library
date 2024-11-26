@@ -157,29 +157,8 @@
   /* Make scrollbar thinner */
   /* width */
 
-  .thin-scrollbar::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
 
-  /* Track */
-  .thin-scrollbar::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px #c9cacc;
-    border-radius: 10px;
-    border-radius: 10px;
-  }
-
-  /* Handle */
-  .thin-scrollbar::-webkit-scrollbar-thumb {
-    background: #c9cacc;
-    border-radius: 10px;
-  }
-
-  /* Handle on hover */
-  .thin-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #dcddde;
-  }
-
+  
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
@@ -212,5 +191,30 @@
   .h-dscreen {
     height: 100vh;
     height: 100dvh;
+  }
+
+  @media screen and (min-width: 768px) {
+    .thin-scrollbar::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+  
+    /* Track */
+    .thin-scrollbar::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px #c9cacc;
+      border-radius: 10px;
+      border-radius: 10px;
+    }
+  
+    /* Handle */
+    .thin-scrollbar::-webkit-scrollbar-thumb {
+      background: #c9cacc;
+      border-radius: 10px;
+    }
+  
+    /* Handle on hover */
+    .thin-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #dcddde;
+    }    
   }
 }
