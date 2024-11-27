@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { format } from "date-fns";
-// import { Calendar as CalendarIcon } from "lucide-react";
 import { PropsBase, PropsSingle, DayEventHandler } from "react-day-picker";
 
 import { cn } from "../../lib/utils";

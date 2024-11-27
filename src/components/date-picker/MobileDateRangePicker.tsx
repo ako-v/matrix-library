@@ -2,13 +2,13 @@
 
 import * as React from "react";
 import { format } from "date-fns";
-import { Calendar as CalendarIcon } from "lucide-react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { PropsBase, PropsRange, DateRange, DayEventHandler } from "react-day-picker";
 
 import { cn } from "../../lib/utils";
 import { Calendar } from "./calendar";
 import { Button } from "../button/Button";
+import { CalendarIcon } from "../Icons/CalendarIcon";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "../dialog/Dialog";
 
 type MobileDateRangePickerProps = PropsBase &
@@ -90,7 +90,7 @@ const MobileDateRangePicker: React.FC<MobileDateRangePickerProps> = ({
         ) : (
           <span>{placeholder ?? "Pick a Range"}</span>
         )}
-        <CalendarIcon className="mr-2 h-4 w-4 ms-auto" />
+        <CalendarIcon className="mr-2 h-5 w-4 ms-auto" />
       </Button>
       <Dialog open={isOpen} onOpenChange={handleCancel}>
         <DialogContent className="h-dscreen w-screen p-0 flex flex-col gap-0 data-[state=open]:animate-slide-from-bottom data-[state=closed]:animate-slide-to-bottom overflow-auto max-w-screen-2xl sm:rounded-none">

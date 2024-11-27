@@ -2,12 +2,12 @@
 
 import * as React from "react";
 import { format } from "date-fns";
-import { Calendar as CalendarIcon } from "lucide-react";
 import { PropsBase, PropsRange, DateRange } from "react-day-picker";
 
 import { cn } from "../../lib/utils";
 import { Calendar } from "./calendar";
 import { Button } from "../button/Button";
+import { CalendarIcon } from "../Icons/CalendarIcon";
 import { Popover, PopoverContent, PopoverTrigger } from "../popover/Popover";
 
 type DesktopDateRangePickerProps = PropsBase &
@@ -47,7 +47,7 @@ const DesktopDateRangePicker: React.FC<DesktopDateRangePickerProps> = ({
             )}
           >
             {selected?.from ? format(selected.from, formatStr ?? "yyyy/MM/dd") : <span>{placeholder ?? "From"}</span>}
-            <CalendarIcon className="mr-2 h-4 w-4 ms-auto" />
+            <CalendarIcon className="mr-2 h-5 w-5 ms-auto" />
           </Button>
           <Button
             variant={"outline"}
@@ -58,7 +58,7 @@ const DesktopDateRangePicker: React.FC<DesktopDateRangePickerProps> = ({
             )}
           >
             {selected?.to ? format(selected.to, formatStr ?? "yyyy/MM/dd") : <span>{placeholder ?? "To"}</span>}
-            <CalendarIcon className="mr-2 h-4 w-4 ms-auto" />
+            <CalendarIcon className="mr-2 h-5 w-5 ms-auto" />
           </Button>
         </div>
       </PopoverTrigger>
