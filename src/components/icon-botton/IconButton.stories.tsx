@@ -69,7 +69,6 @@ export const Large: Story = {
 
 export const Small: Story = {
   args: {
-    variant: "table",
     size: "sm",
     children: <PlusIcon />,
     asChild: false,

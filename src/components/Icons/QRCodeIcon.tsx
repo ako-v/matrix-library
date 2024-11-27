@@ -1,8 +1,8 @@
-import { SVGProps } from 'react';
+import { SVGProps } from "react";
 
 export function QRCodeIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 24 24" {...props}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" {...props}>
       <g clipPath="url(#clip0_1313_4210)">
         <path
           fillRule="evenodd"

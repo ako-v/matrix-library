@@ -28,6 +28,8 @@ const DatePicker: React.FC<DatePickerProps> = props => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [windowSize]);
 
+  console.log(defaultTheme.screens.md);
+
   return isMobile ? <MobileDatePicker {...props} /> : <DesktopDatePicker {...props} />;
 };
 

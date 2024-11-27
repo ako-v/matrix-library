@@ -1,8 +1,8 @@
-import { SVGProps } from 'react';
+import { SVGProps } from "react";
 
 export function RightArrowIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 24 24" {...props}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" {...props}>
       <path d="M11.9849 7.11515L16.1666 10.938H5.09407C4.48954 10.938 4 11.4153 4 11.9987C4 12.582 4.48954 13.0593 5.09407 13.0593H16.1666L11.9858 16.8835C11.7576 17.0943 11.644 17.3727 11.644 17.6556C11.644 17.9166 11.742 18.1775 11.941 18.3821C12.3533 18.8089 13.0442 18.8294 13.4833 18.4277L19.6695 12.7708C20.1102 12.3703 20.1102 11.627 19.6695 11.2266L13.4833 5.56971C13.0441 5.1678 12.3533 5.18853 11.941 5.61527C11.5258 6.04122 11.544 6.71298 11.9849 7.11515Z" />
     </svg>
   );
