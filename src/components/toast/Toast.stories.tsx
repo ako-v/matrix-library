@@ -1,17 +1,17 @@
 import { Meta } from "@storybook/react/*";
 
-import { Toaster } from "./Toast";
+import { Toast } from "./Toast";
 import { toast } from "./use-toast";
 import { Button } from "../button/Button";
 
 const meta = {
   title: "Components/Toast",
-  component: Toaster,
+  component: Toast,
   parameters: {
     layout: "fullscreen",
   },
   tags: ["autodocs"],
-} satisfies Meta<typeof Toaster>;
+} satisfies Meta<typeof Toast>;
 
 export const Variants = {
   parameters: {
@@ -108,7 +108,7 @@ export const Variants = {
         >
           Fire an Info Toast
         </Button>
-        <Toaster {...args} />
+        <Toast {...args} />
       </div>
     );
   },
