@@ -31,7 +31,7 @@ const iconButtonVariants = cva(
   },
 );
 
-export interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof iconButtonVariants> {
+interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof iconButtonVariants> {
   asChild?: boolean;
   loading?: boolean;
 }
@@ -48,4 +48,4 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
   },
 );
 
-export { IconButton };
+export { IconButton, type IconButtonProps };

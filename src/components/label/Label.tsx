@@ -9,5 +9,6 @@ const Label = React.forwardRef<HTMLLabelElement, React.ComponentPropsWithoutRef<
   ({ className, ...props }, ref) => <label ref={ref} className={cn(labelVariants({ className }))} {...props} />,
 );
 Label.displayName = "Label";
+type LabelProps = React.ComponentProps<typeof Label>;
 
-export { Label };
+export { Label, type LabelProps };

@@ -1,5 +1,6 @@
 import React from "react";
 import * as CollapsiblePrimitive from "@radix-ui/react-collapsible";
+import type { CollapsibleProps, CollapsibleContentProps, CollapsibleTriggerProps } from "@radix-ui/react-collapsible";
 
 import { cn } from "../../lib/utils";
 
@@ -35,4 +36,4 @@ const CollapsibleTrigger = React.forwardRef<
 ));
 CollapsibleTrigger.displayName = CollapsiblePrimitive.Trigger.displayName;
 
-export { Collapsible, CollapsibleTrigger, CollapsibleContent };
+export { Collapsible, CollapsibleTrigger, CollapsibleContent, type CollapsibleProps, type CollapsibleContentProps, type CollapsibleTriggerProps };

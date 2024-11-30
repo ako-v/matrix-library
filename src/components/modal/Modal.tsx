@@ -33,6 +33,7 @@ const ModalFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElemen
   <div className={cn("flex flex-row justify-end gap-2", className)} {...props} />
 );
 ModalFooter.displayName = "DialogFooter";
+type ModalFooterProps = React.ComponentProps<typeof ModalFooter>;
 
 const ModalTitle = React.forwardRef<React.ElementRef<typeof DialogPrimitive.Title>, React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>>(
   ({ className, ...props }, ref) => (
@@ -103,4 +104,4 @@ const Modal = React.forwardRef<React.ElementRef<typeof DialogPrimitive.Content>,
   );
 });
 
-export { Modal, ModalFooter, type ModalProps };
+export { Modal, ModalFooter, type ModalProps, type ModalFooterProps };

@@ -33,4 +33,4 @@ const DatePicker: React.FC<DatePickerProps> = props => {
   return isMobile ? <MobileDatePicker {...props} /> : <DesktopDatePicker {...props} />;
 };
 
-export { DatePicker, type DatePickerProps };
+export { DatePicker, DesktopDatePicker, MobileDatePicker, type DatePickerProps, type DesktopDatePickerProps, type MobileDatePickerProps };

@@ -19,7 +19,7 @@ const textFieldVariants = cva(
   },
 );
 
-export interface TextFieldProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof textFieldVariants> {
+interface TextFieldProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof textFieldVariants> {
   suffix?: React.ReactNode;
   endButton?: React.ReactNode;
   slotProps?: {
@@ -49,4 +49,4 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(({ classNam
 });
 TextField.displayName = "TextField";
 
-export { TextField };
+export { TextField, type TextFieldProps };

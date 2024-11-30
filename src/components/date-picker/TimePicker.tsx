@@ -2,7 +2,7 @@ import React from "react";
 import defaultTheme from "tailwindcss/defaultTheme";
 
 import { Time } from "./TimePickerContent";
-import { MobileTimePicker } from "./MobileTimePicker";
+import { MobileTimePicker, MobileTimePickerProps } from "./MobileTimePicker";
 import { DesktopTimePicker, DesktopTimePickerProps } from "./DesktopTimePicker";
 
 type TimePickerProps = DesktopTimePickerProps & {};
@@ -33,4 +33,4 @@ const TimePicker: React.FC<TimePickerProps> = props => {
   return isMobile ? <MobileTimePicker {...props} /> : <DesktopTimePicker {...props} />;
 };
 
-export { TimePicker, type TimePickerProps, type Time };
+export { TimePicker, DesktopTimePicker, type DesktopTimePickerProps, MobileTimePicker, type MobileTimePickerProps, type TimePickerProps, type Time };

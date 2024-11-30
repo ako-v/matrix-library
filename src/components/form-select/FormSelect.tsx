@@ -7,7 +7,7 @@ import { SpinnerIcon } from "../Icons/SpinnerIcon";
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "../form/Form";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../select/Select";
 
-export type FormSelectProps<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>> = Omit<
+type FormSelectProps<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>> = Omit<
   ControllerProps<TFieldValues, TName>,
   "render"
 > & {
@@ -115,4 +115,4 @@ const FormSelect = <TFieldValues extends FieldValues, TName extends FieldPath<TF
     />
   );
 };
-export default FormSelect;
+export { FormSelect, type FormSelectProps };

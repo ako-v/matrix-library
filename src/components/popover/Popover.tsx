@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
+import type { PopoverContentProps, PopoverProps, PopoverTriggerProps, PopoverAnchorProps } from "@radix-ui/react-popover";
 
 import { cn } from "../../lib/utils";
 
@@ -30,4 +31,13 @@ const PopoverContent = React.forwardRef<
 ));
 PopoverContent.displayName = PopoverPrimitive.Content.displayName;
 
-export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor };
+export {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverAnchor,
+  type PopoverProps,
+  type PopoverContentProps,
+  type PopoverTriggerProps,
+  type PopoverAnchorProps,
+};

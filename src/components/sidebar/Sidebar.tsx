@@ -7,7 +7,6 @@ import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 import { cn } from "../../lib/utils";
 import { Skeleton } from "../skeleton/Skeleton";
-import { useSidebar } from "./hooks/use-sidebar";
 import { Separator } from "../separator/Separator";
 import { useIsMobile } from "../../lib/hooks/use-mobile";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../tooltip/Tooltip";
@@ -29,6 +28,15 @@ type SidebarContext = {
 };
 
 const SidebarContext = React.createContext<SidebarContext | null>(null);
+
+function useSidebar() {
+  const context = React.useContext(SidebarContext);
+  if (!context) {
+    throw new Error("useSidebar must be used within a SidebarProvider.");
+  }
+
+  return context;
+}
 
 const SidebarProvider = React.forwardRef<
   HTMLDivElement,
@@ -108,6 +116,7 @@ const SidebarProvider = React.forwardRef<
   );
 });
 SidebarProvider.displayName = "SidebarProvider";
+type SidebarProviderProps = React.ComponentProps<typeof SidebarProvider>;
 
 const Sidebar = React.forwardRef<
   HTMLDivElement,
@@ -244,6 +253,7 @@ const Sidebar = React.forwardRef<
   );
 });
 Sidebar.displayName = "Sidebar";
+type SidebarProps = React.ComponentProps<typeof Sidebar>;
 
 const SidebarTrigger = React.forwardRef<React.ElementRef<"button">, React.ComponentProps<"button"> & { asChild?: boolean }>(
   ({ className, onClick, asChild, ...props }, ref) => {
@@ -265,6 +275,7 @@ const SidebarTrigger = React.forwardRef<React.ElementRef<"button">, React.Compon
   },
 );
 SidebarTrigger.displayName = "SidebarTrigger";
+type SidebarTriggerProps = React.ComponentProps<typeof SidebarTrigger>;
 
 const SidebarRail = React.forwardRef<HTMLButtonElement, React.ComponentProps<"button">>(({ className, ...props }, ref) => {
   const { toggleSidebar } = useSidebar();
@@ -291,6 +302,7 @@ const SidebarRail = React.forwardRef<HTMLButtonElement, React.ComponentProps<"bu
   );
 });
 SidebarRail.displayName = "SidebarRail";
+type SidebarRailProps = React.ComponentProps<typeof SidebarRail>;
 
 const SidebarInset = React.forwardRef<HTMLDivElement, React.ComponentProps<"main">>(({ className, ...props }, ref) => {
   return (
@@ -306,16 +318,19 @@ const SidebarInset = React.forwardRef<HTMLDivElement, React.ComponentProps<"main
   );
 });
 SidebarInset.displayName = "SidebarInset";
+type SidebarInsetProps = React.ComponentProps<typeof SidebarInset>;
 
 const SidebarHeader = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(({ className, ...props }, ref) => {
   return <div ref={ref} data-sidebar="header" className={cn("flex flex-col gap-2 p-2", className)} {...props} />;
 });
 SidebarHeader.displayName = "SidebarHeader";
+type SidebarHeaderProps = React.ComponentProps<typeof SidebarHeader>;
 
 const SidebarFooter = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(({ className, ...props }, ref) => {
   return <div ref={ref} data-sidebar="footer" className={cn("flex flex-col gap-2 p-2", className)} {...props} />;
 });
 SidebarFooter.displayName = "SidebarFooter";
+type SidebarFooterProps = React.ComponentProps<typeof SidebarFooter>;
 
 const SidebarSeparator = React.forwardRef<React.ElementRef<typeof Separator>, React.ComponentProps<typeof Separator>>(
   ({ className, ...props }, ref) => {
@@ -323,6 +338,7 @@ const SidebarSeparator = React.forwardRef<React.ElementRef<typeof Separator>, Re
   },
 );
 SidebarSeparator.displayName = "SidebarSeparator";
+type SidebarSeparatorProps = React.ComponentProps<typeof SidebarSeparator>;
 
 const SidebarContent = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(({ className, ...props }, ref) => {
   return (
@@ -335,11 +351,13 @@ const SidebarContent = React.forwardRef<HTMLDivElement, React.ComponentProps<"di
   );
 });
 SidebarContent.displayName = "SidebarContent";
+type SidebarContentProps = React.ComponentProps<typeof SidebarContent>;
 
 const SidebarGroup = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(({ className, ...props }, ref) => {
   return <div ref={ref} data-sidebar="group" className={cn("relative flex w-full min-w-0 flex-col py-2", className)} {...props} />;
 });
 SidebarGroup.displayName = "SidebarGroup";
+type SidebarGroupProps = React.ComponentProps<typeof SidebarGroup>;
 
 const SidebarGroupLabel = React.forwardRef<HTMLDivElement, React.ComponentProps<"div"> & { asChild?: boolean }>(
   ({ className, asChild = false, ...props }, ref) => {
@@ -360,6 +378,7 @@ const SidebarGroupLabel = React.forwardRef<HTMLDivElement, React.ComponentProps<
   },
 );
 SidebarGroupLabel.displayName = "SidebarGroupLabel";
+type SidebarGroupLabelProps = React.ComponentProps<typeof SidebarGroupLabel>;
 
 const SidebarGroupAction = React.forwardRef<HTMLButtonElement, React.ComponentProps<"button"> & { asChild?: boolean }>(
   ({ className, asChild = false, ...props }, ref) => {
@@ -382,21 +401,25 @@ const SidebarGroupAction = React.forwardRef<HTMLButtonElement, React.ComponentPr
   },
 );
 SidebarGroupAction.displayName = "SidebarGroupAction";
+type SidebarGroupActionProps = React.ComponentProps<typeof SidebarGroupAction>;
 
 const SidebarGroupContent = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(({ className, ...props }, ref) => (
   <div ref={ref} data-sidebar="group-content" className={cn("w-full text-sm", className)} {...props} />
 ));
 SidebarGroupContent.displayName = "SidebarGroupContent";
+type SidebarGroupContentProps = React.ComponentProps<typeof SidebarGroupContent>;
 
 const SidebarMenu = React.forwardRef<HTMLUListElement, React.ComponentProps<"ul">>(({ className, ...props }, ref) => (
   <ul ref={ref} data-sidebar="menu" className={cn("flex w-full min-w-0 flex-col gap-4", className)} {...props} />
 ));
 SidebarMenu.displayName = "SidebarMenu";
+type SidebarMenuProps = React.ComponentProps<typeof SidebarMenu>;
 
 const SidebarMenuItem = React.forwardRef<HTMLLIElement, React.ComponentProps<"li">>(({ className, ...props }, ref) => (
   <li ref={ref} data-sidebar="menu-item" className={cn("group/menu-item relative ps-2", className)} {...props} />
 ));
 SidebarMenuItem.displayName = "SidebarMenuItem";
+type SidebarMenuItemProps = React.ComponentProps<typeof SidebarMenuItem>;
 
 const sidebarMenuButtonVariants = cva(
   [
@@ -465,6 +488,7 @@ const SidebarMenuButton = React.forwardRef<
   );
 });
 SidebarMenuButton.displayName = "SidebarMenuButton";
+type SidebarMenuButtonProps = React.ComponentProps<typeof SidebarMenuButton>;
 
 const SidebarMenuAction = React.forwardRef<
   HTMLButtonElement,
@@ -495,6 +519,7 @@ const SidebarMenuAction = React.forwardRef<
   );
 });
 SidebarMenuAction.displayName = "SidebarMenuAction";
+type SidebarMenuActionProps = React.ComponentProps<typeof SidebarMenuAction>;
 
 const SidebarMenuBadge = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(({ className, ...props }, ref) => (
   <div
@@ -512,6 +537,7 @@ const SidebarMenuBadge = React.forwardRef<HTMLDivElement, React.ComponentProps<"
   />
 ));
 SidebarMenuBadge.displayName = "SidebarMenuBadge";
+type SidebarMenuBadgeProps = React.ComponentProps<typeof SidebarMenuBadge>;
 
 const SidebarMenuSkeleton = React.forwardRef<
   HTMLDivElement,
@@ -540,6 +566,7 @@ const SidebarMenuSkeleton = React.forwardRef<
   );
 });
 SidebarMenuSkeleton.displayName = "SidebarMenuSkeleton";
+type SidebarMenuSkeletonProps = React.ComponentProps<typeof SidebarMenuSkeleton>;
 
 const SidebarMenuSub = React.forwardRef<HTMLUListElement, React.ComponentProps<"ul">>(({ className, ...props }, ref) => (
   <ul
@@ -550,9 +577,11 @@ const SidebarMenuSub = React.forwardRef<HTMLUListElement, React.ComponentProps<"
   />
 ));
 SidebarMenuSub.displayName = "SidebarMenuSub";
+type SidebarMenuSubProps = React.ComponentProps<typeof SidebarMenuSub>;
 
 const SidebarMenuSubItem = React.forwardRef<HTMLLIElement, React.ComponentProps<"li">>(({ ...props }, ref) => <li ref={ref} {...props} />);
 SidebarMenuSubItem.displayName = "SidebarMenuSubItem";
+type SidebarMenuSubItemProps = React.ComponentProps<typeof SidebarMenuSubItem>;
 
 const SidebarMenuSubButton = React.forwardRef<
   HTMLAnchorElement,
@@ -583,6 +612,7 @@ const SidebarMenuSubButton = React.forwardRef<
   );
 });
 SidebarMenuSubButton.displayName = "SidebarMenuSubButton";
+type SidebarMenuSubButtonProps = React.ComponentProps<typeof SidebarMenuSubButton>;
 
 export {
   Sidebar,
@@ -607,5 +637,27 @@ export {
   SidebarRail,
   SidebarSeparator,
   SidebarTrigger,
-  SidebarContext,
+  useSidebar,
+  type SidebarProps,
+  type SidebarContentProps,
+  type SidebarFooterProps,
+  type SidebarGroupProps,
+  type SidebarGroupActionProps,
+  type SidebarGroupContentProps,
+  type SidebarGroupLabelProps,
+  type SidebarHeaderProps,
+  type SidebarInsetProps,
+  type SidebarMenuProps,
+  type SidebarMenuActionProps,
+  type SidebarMenuBadgeProps,
+  type SidebarMenuButtonProps,
+  type SidebarMenuItemProps,
+  type SidebarMenuSkeletonProps,
+  type SidebarMenuSubProps,
+  type SidebarMenuSubButtonProps,
+  type SidebarMenuSubItemProps,
+  type SidebarProviderProps,
+  type SidebarRailProps,
+  type SidebarSeparatorProps,
+  type SidebarTriggerProps,
 };

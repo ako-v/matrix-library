@@ -23,12 +23,12 @@ const chipVariants = cva("inline-flex items-center justify-center gap-2 whitespa
   },
 });
 
-export interface ChipsProps extends React.ButtonHTMLAttributes<HTMLSpanElement>, VariantProps<typeof chipVariants> {
+interface ChipProps extends React.ButtonHTMLAttributes<HTMLSpanElement>, VariantProps<typeof chipVariants> {
   asChild?: boolean;
   onClose?: () => void;
 }
 
-const Chip = React.forwardRef<HTMLSpanElement, ChipsProps>(({ className, variant, asChild = false, children, onClose, size, ...props }, ref) => {
+const Chip = React.forwardRef<HTMLSpanElement, ChipProps>(({ className, variant, asChild = false, children, onClose, size, ...props }, ref) => {
   const Comp = asChild ? Slot : "span";
   return (
     <Comp className={cn(chipVariants({ variant, size, className }))} ref={ref} {...props}>
@@ -49,4 +49,4 @@ const Chip = React.forwardRef<HTMLSpanElement, ChipsProps>(({ className, variant
 });
 Chip.displayName = "Chip";
 
-export { Chip };
+export { Chip, type ChipProps };

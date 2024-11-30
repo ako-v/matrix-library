@@ -32,4 +32,11 @@ const DateRangePicker: React.FC<DateRangePickerProps> = props => {
   return isMobile ? <MobileDateRangePicker {...props} /> : <DesktopDateRangePicker {...props} />;
 };
 
-export { DateRangePicker, type DateRangePickerProps };
+export {
+  DateRangePicker,
+  DesktopDateRangePicker,
+  MobileDateRangePicker,
+  type DateRangePickerProps,
+  type DesktopDateRangePickerProps,
+  type MobileDateRangePickerProps,
+};

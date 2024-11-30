@@ -3,7 +3,7 @@ import { SlotProps } from "@radix-ui/react-slot";
 import { Control, ControllerProps, FieldPath, FieldValues } from "react-hook-form";
 import { TextField, TextFieldProps } from "../text-field/TextField";
 
-export type FormInputProps<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>> = Omit<
+type FormInputProps<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>> = Omit<
   ControllerProps<TFieldValues, TName>,
   "render"
 > & {
@@ -46,4 +46,4 @@ const FormInput = <TFieldValues extends FieldValues, TName extends FieldPath<TFi
     />
   );
 };
-export default FormInput;
+export { FormInput, type FormInputProps };

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Toast, ToastClose, ToastProvider, ToastTitle, ToastViewport } from "./toast-components";
+import { Toast as Root, ToastClose, ToastProvider, ToastTitle, ToastViewport } from "./toast-components";
 
 import { useToasts, toastParams } from "./use-toast";
 import { InfoCircleIcon } from "../Icons/InfoCircleIcon";
@@ -7,12 +7,12 @@ import { SuccessCircleIcon } from "../Icons/SuccessCircleIcon";
 import { WarningCircleIcon } from "../Icons/WarningCircleIcon";
 import { DangerCircleIcon } from "../Icons/DangerCircleIcon";
 
-export type ToastProps = {
+type ToastProps = {
   limit?: number;
   duration?: number;
 };
 
-export function Toaster({ limit = 3, duration = 5000 }: ToastProps) {
+function Toast({ limit = 3, duration = 5000 }: ToastProps) {
   const { toasts, removeToast } = useToasts();
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export function Toaster({ limit = 3, duration = 5000 }: ToastProps) {
     <ToastProvider duration={duration}>
       {Array.from(toasts).map(([key, { message, variant }]) => {
         return (
-          <Toast
+          <Root
             key={key}
             variant={variant}
             onOpenChange={open => {
@@ -45,10 +45,13 @@ export function Toaster({ limit = 3, duration = 5000 }: ToastProps) {
             </div>
             <ToastClose />
             {/* {action} */}
-          </Toast>
+          </Root>
         );
       })}
       <ToastViewport />
     </ToastProvider>
   );
 }
+Toast.displayName = "Toast";
+
+export { Toast, type ToastProps };

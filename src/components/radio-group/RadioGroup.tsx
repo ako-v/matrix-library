@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
+import type { RadioGroupProps, RadioGroupItemProps } from "@radix-ui/react-radio-group";
 
 import { cn } from "../../lib/utils";
 import { CircleIcon } from "../Icons/CircleIcon";
@@ -35,4 +36,4 @@ const RadioGroupItem = React.forwardRef<
 });
 RadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName;
 
-export { RadioGroup, RadioGroupItem };
+export { RadioGroup, RadioGroupItem, type RadioGroupProps, type RadioGroupItemProps };

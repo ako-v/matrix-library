@@ -1,5 +1,15 @@
 import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
+import type {
+  DialogContentProps,
+  DialogTriggerProps,
+  DialogProps,
+  DialogCloseProps,
+  DialogTitleProps,
+  DialogPortalProps,
+  DialogOverlayProps,
+  DialogDescriptionProps,
+} from "@radix-ui/react-dialog";
 
 import { cn } from "../../lib/utils";
 import { CloseIcon } from "../Icons/CloseIcon";
@@ -75,3 +85,13 @@ const DialogDescription = React.forwardRef<
 DialogDescription.displayName = DialogPrimitive.Description.displayName;
 
 export { Dialog, DialogPortal, DialogOverlay, DialogTrigger, DialogClose, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription };
+export type {
+  DialogContentProps,
+  DialogTriggerProps,
+  DialogProps,
+  DialogCloseProps,
+  DialogTitleProps,
+  DialogPortalProps,
+  DialogOverlayProps,
+  DialogDescriptionProps,
+};
