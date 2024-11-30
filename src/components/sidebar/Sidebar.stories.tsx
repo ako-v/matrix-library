@@ -3,7 +3,6 @@ import { Meta } from "@storybook/react/*";
 
 import { Button } from "../button/Button";
 import { HomeIcon } from "../Icons/HomeIcon";
-import { EyeOpenIcon } from "../Icons/EyeOpenIcon";
 import { CalendarIcon } from "../Icons/CalendarIcon";
 import { ChevronRightIcon } from "../Icons/ChevronRightIcon";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../collapsible/Collapsible";
@@ -69,10 +68,7 @@ export const WithRightAndLeft = () => {
             <SidebarGroupLabel>Platform</SidebarGroupLabel>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton tooltip="dashboard">
-                  Watch
-                  <EyeOpenIcon />
-                </SidebarMenuButton>
+                <SidebarMenuButton tooltip="dashboard">Watch</SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroup>

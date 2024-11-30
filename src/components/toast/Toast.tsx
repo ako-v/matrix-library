@@ -5,7 +5,7 @@ import { useToasts, toastParams } from "./use-toast";
 import { InfoCircleIcon } from "../Icons/InfoCircleIcon";
 import { SuccessCircleIcon } from "../Icons/SuccessCircleIcon";
 import { WarningCircleIcon } from "../Icons/WarningCircleIcon";
-import { DestructiveCircleIcon } from "../Icons/DestructiveCircleIcon";
+import { DangerCircleIcon } from "../Icons/DangerCircleIcon";
 
 export type ToastProps = {
   limit?: number;
@@ -36,7 +36,7 @@ export function Toaster({ limit = 3, duration = 5000 }: ToastProps) {
           >
             <div className="flex gap-2 items-center">
               <div>
-                {variant === "danger" && <DestructiveCircleIcon className="w-5 h-5" />}
+                {variant === "danger" && <DangerCircleIcon className="w-5 h-5" />}
                 {variant === "success" && <SuccessCircleIcon className="w-5 h-5" />}
                 {variant === "info" && <InfoCircleIcon className="w-5 h-5" />}
                 {variant === "warning" && <WarningCircleIcon className="w-5 h-5" />}
