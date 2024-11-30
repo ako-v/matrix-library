@@ -72,6 +72,24 @@ export {
   type DialogTriggerProps,
 } from "./components/dialog/Dialog";
 export { Drawer, DrawerContent, DrawerMain, type DrawerContentProps, type DrawerMainProps, type DrawerProps } from "./components/drawer/Drawer";
+export {
+  SwipableDrawer,
+  SwipableDrawerTrigger,
+  SwipableDrawerClose,
+  SwipableDrawerContent,
+  SwipableDrawerHeader,
+  SwipableDrawerFooter,
+  SwipableDrawerTitle,
+  SwipableDrawerDescription,
+  type SwipableDrawerProps,
+  type SwipableDrawerTriggerProps,
+  type SwipableDrawerCloseProps,
+  type SwipableDrawerContentProps,
+  type SwipableDrawerHeaderProps,
+  type SwipableDrawerFooterProps,
+  type SwipableDrawerTitleProps,
+  type SwipableDrawerDescriptionProps,
+} from "./components/drawer/SwipableDrawer";
 export { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "./components/form/Form";
 export { FormInput, type FormInputProps } from "./components/form-input/FormInput";
 export { FormSelect, type FormSelectProps } from "./components/form-select/FormSelect";

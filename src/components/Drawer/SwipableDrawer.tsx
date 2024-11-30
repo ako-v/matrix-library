@@ -9,18 +9,23 @@ const SwipableDrawer = ({ shouldScaleBackground = true, ...props }: React.Compon
   <DrawerPrimitive.Root shouldScaleBackground={shouldScaleBackground} {...props} />
 );
 SwipableDrawer.displayName = "SwipableDrawer";
+type SwipableDrawerProps = React.ComponentProps<typeof SwipableDrawer>;
 
 const SwipableDrawerTrigger = DrawerPrimitive.Trigger;
+SwipableDrawerTrigger.displayName = "SwipableDrawerTrigger";
+type SwipableDrawerTriggerProps = React.ComponentProps<typeof SwipableDrawerTrigger>;
 
 const SwipableDrawerPortal = DrawerPrimitive.Portal;
 
 const SwipableDrawerClose = DrawerPrimitive.Close;
+SwipableDrawerClose.displayName = "SwipableDrawerClose";
+type SwipableDrawerCloseProps = React.ComponentProps<typeof SwipableDrawerClose>;
 
 const SwipableDrawerOverlay = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Overlay>
 >(({ className, ...props }, ref) => <DrawerPrimitive.Overlay ref={ref} className={cn("fixed inset-0 z-50 bg-black/80", className)} {...props} />);
-SwipableDrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName;
+SwipableDrawerOverlay.displayName = "SwipableDrawerOverlay";
 
 const SwipableDrawerContent = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Content>,
@@ -38,17 +43,20 @@ const SwipableDrawerContent = React.forwardRef<
     </DrawerPrimitive.Content>
   </SwipableDrawerPortal>
 ));
-SwipableDrawerContent.displayName = "DrawerContent";
+SwipableDrawerContent.displayName = "SwipableDrawerContent";
+type SwipableDrawerContentProps = React.ComponentProps<typeof SwipableDrawerContent>;
 
 const SwipableDrawerHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
   <div className={cn("grid gap-1.5 p-4 text-center sm:text-left", className)} {...props} />
 );
-SwipableDrawerHeader.displayName = "DrawerHeader";
+SwipableDrawerHeader.displayName = "SwipableDrawerHeader";
+type SwipableDrawerHeaderProps = React.ComponentProps<typeof SwipableDrawerHeader>;
 
 const SwipableDrawerFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
   <div className={cn("mt-auto flex flex-col gap-2 p-4", className)} {...props} />
 );
-SwipableDrawerFooter.displayName = "DrawerFooter";
+SwipableDrawerFooter.displayName = "SwipableDrawerFooter";
+type SwipableDrawerFooterProps = React.ComponentProps<typeof SwipableDrawerFooter>;
 
 const SwipableDrawerTitle = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Title>,
@@ -56,18 +64,18 @@ const SwipableDrawerTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DrawerPrimitive.Title ref={ref} className={cn("text-lg font-semibold leading-none tracking-tight", className)} {...props} />
 ));
-SwipableDrawerTitle.displayName = DrawerPrimitive.Title.displayName;
+SwipableDrawerTitle.displayName = "SwipableDrawerTitle";
+type SwipableDrawerTitleProps = React.ComponentProps<typeof SwipableDrawerTitle>;
 
 const SwipableDrawerDescription = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Description>,
   React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Description>
 >(({ className, ...props }, ref) => <DrawerPrimitive.Description ref={ref} className={cn("text-sm text-muted-foreground", className)} {...props} />);
-SwipableDrawerDescription.displayName = DrawerPrimitive.Description.displayName;
+SwipableDrawerDescription.displayName = "SwipableDrawerDescription";
+type SwipableDrawerDescriptionProps = React.ComponentProps<typeof SwipableDrawerDescription>;
 
 export {
   SwipableDrawer,
-  SwipableDrawerPortal,
-  SwipableDrawerOverlay,
   SwipableDrawerTrigger,
   SwipableDrawerClose,
   SwipableDrawerContent,
@@ -75,4 +83,12 @@ export {
   SwipableDrawerFooter,
   SwipableDrawerTitle,
   SwipableDrawerDescription,
+  type SwipableDrawerProps,
+  type SwipableDrawerTriggerProps,
+  type SwipableDrawerCloseProps,
+  type SwipableDrawerContentProps,
+  type SwipableDrawerHeaderProps,
+  type SwipableDrawerFooterProps,
+  type SwipableDrawerTitleProps,
+  type SwipableDrawerDescriptionProps,
 };
