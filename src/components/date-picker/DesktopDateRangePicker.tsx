@@ -37,7 +37,25 @@ const DesktopDateRangePicker: React.FC<DesktopDateRangePickerProps> = ({
       }}
     >
       <PopoverTrigger asChild>
-        <div className="flex gap-2">
+        <Button
+          variant={"outline"}
+          className={cn(
+            "border-gray-300 text-text focus:ring-0 active:ring-transparent justify-start",
+            !selected && "text-muted-foreground",
+            className,
+          )}
+        >
+          {selected ? (
+            <div className="grid grid-cols-2 flex-1 justify-items-start">
+              <span>From: {selected?.from ? format(selected.from, formatStr ?? "yyyy/MM/dd") : "-"}</span>{" "}
+              <span>To: {selected?.to ? format(selected.to, formatStr ?? "yyyy/MM/dd") : "-"}</span>
+            </div>
+          ) : (
+            <span>{placeholder ?? "Pick a Range"}</span>
+          )}
+          <CalendarIcon className="mr-2 h-5 w-4 ms-auto" />
+        </Button>
+        {/* <div className="flex gap-2">
           <Button
             variant={"outline"}
             className={cn(
@@ -60,9 +78,9 @@ const DesktopDateRangePicker: React.FC<DesktopDateRangePickerProps> = ({
             {selected?.to ? format(selected.to, formatStr ?? "yyyy/MM/dd") : <span>{placeholder ?? "To"}</span>}
             <CalendarIcon className="mr-2 h-5 w-5 ms-auto" />
           </Button>
-        </div>
+        </div> */}
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-0">
+      <PopoverContent className="w-auto p-0" align="start">
         <Calendar {...props} mode="range" selected={selected} className={cn(calendarClassName, "md:max-w-full md:w-[36rem]")} numberOfMonths={2} />
       </PopoverContent>
     </Popover>

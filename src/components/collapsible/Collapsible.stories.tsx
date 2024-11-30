@@ -1,4 +1,6 @@
 import { Meta, StoryObj, Decorator } from "@storybook/react/*";
+
+import { ChevronDownIcon } from "../Icons/ChevronDownIcon";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "./Collapsible";
 
 const withCustomClass: Decorator = Story => (
@@ -23,7 +25,10 @@ export const Default: Story = {
   },
   render: ({ ...props }) => (
     <Collapsible {...props}>
-      <CollapsibleTrigger className="flex justify-between w-full">Collapsibe title</CollapsibleTrigger>
+      <CollapsibleTrigger className="group flex justify-between w-full">
+        Collapsibe title
+        <ChevronDownIcon className="text-primary w-6 h-6 group-data-[state='open']:rotate-180 transition-transform ms-auto" />
+      </CollapsibleTrigger>
       <CollapsibleContent>
         <div>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit odio maiores, earum impedit nisi recusandae eligendi! Quibusdam mollitia modi

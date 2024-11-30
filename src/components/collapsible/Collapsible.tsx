@@ -2,7 +2,6 @@ import React from "react";
 import * as CollapsiblePrimitive from "@radix-ui/react-collapsible";
 
 import { cn } from "../../lib/utils";
-import { ChevronDownIcon } from "../Icons/ChevronDownIcon";
 
 const Collapsible = React.forwardRef<
   React.ElementRef<typeof CollapsiblePrimitive.Root>,
@@ -30,9 +29,8 @@ const CollapsibleTrigger = React.forwardRef<
   React.ElementRef<typeof CollapsiblePrimitive.CollapsibleTrigger>,
   React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.CollapsibleTrigger>
 >(({ className, children, ...props }, ref) => (
-  <CollapsiblePrimitive.CollapsibleTrigger ref={ref} className={cn("group p-4", className)} {...props}>
+  <CollapsiblePrimitive.CollapsibleTrigger ref={ref} className={cn("p-4", className)} {...props}>
     {children}
-    <ChevronDownIcon className="text-primary w-6 h-6 group-data-[state='open']:rotate-180 transition-transform ms-auto" />
   </CollapsiblePrimitive.CollapsibleTrigger>
 ));
 CollapsibleTrigger.displayName = CollapsiblePrimitive.Trigger.displayName;

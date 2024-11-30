@@ -6,8 +6,8 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@radix-ui/r
 import { cn } from "../../lib/utils";
 import { Button } from "../button/Button";
 import { ChevronLeftIcon } from "../Icons/ChevronLeftIcon";
-import { ChevronRightIcon } from "../Icons/ChevronRightIcon";
 import { ChevronDownIcon } from "../Icons/ChevronDownIcon";
+import { ChevronRightIcon } from "../Icons/ChevronRightIcon";
 
 export type CalendarProps = DayPickerProps & {};
 
@@ -51,9 +51,9 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
         day: "relative p-0 text-center text-sm h-11 min-w-11 md:min-w-9 md:h-9",
         day_button: "w-11 md:w-9 h-full p-0 text-sm",
         range_start:
-          "before:block before:absolute before:-z-10 before:content-[''] before:w-1/2 before:end-0 before:h-full before:bg-secondary/50 after:w-0",
+          "before:block before:absolute before:-z-10 before:content-[''] before:w-1/2 before:end-0 before:h-full before:bg-secondary/50 after:!w-0",
         range_end:
-          "after:block after:absolute after:top-0 after:-z-10 after:content-[''] after:w-1/2 after:start-0 after:h-full after:bg-secondary/50 before:w-0",
+          "after:block after:absolute after:top-0 after:-z-10 after:content-[''] after:w-1/2 after:start-0 after:h-full after:bg-secondary/50 before:!w-0",
         selected:
           "[&>button]:bg-secondary [&>button]:rounded-full text-text font-bold [&>button]:hover:bg-secondary [&>button]:hover:text-text [&>button]:focus:bg-secondary [&>button]:focus:text-text [&>button]:text-xs",
         today: "text-primary font-bold [&>button]:text-xs",
