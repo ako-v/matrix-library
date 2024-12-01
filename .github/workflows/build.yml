@@ -36,7 +36,7 @@ jobs:
 
           # Remove all files except dist folder and package.json
           cp ./dist ./dist
-          find . -maxdepth 1 ! -name 'dist' ! -name 'package.json' ! -name '.' ! -name .git ! -name .gitignore | xargs rm -rf
+          find . -maxdepth 1 ! -name 'dist' ! -name 'package.json' ! -name '.' ! -name .git | xargs rm -rf
 
           # Commit and push changes
           git add .
