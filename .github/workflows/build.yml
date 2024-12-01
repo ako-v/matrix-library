@@ -30,23 +30,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Verify working directory contents for debugging
-          echo "Working directory contents:"
-          ls -la
-
           # Create dist branch if it doesn't exist
-          git fetch origin dist || true
-          git checkout -B dist
-
-          # Remove old files and copy new build
-          git rm -rf . || true
-
-          # Verify copied files for debugging
-          echo "Files after rm:"
-          ls -la
+          git branch -D dist || true
+          git switch -c dist
 
           # copy nessesary files
-          cp -r ./dist/* ./dist/
+          cp -r ./dist ./dist
           cp ./package.json .
 
           # Commit and push changes
