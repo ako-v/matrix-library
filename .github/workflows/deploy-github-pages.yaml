@@ -24,6 +24,11 @@ jobs:
         with:
           node-version: "20.10.0"
 
+      # Delete existing GitHub Pages artifact
+      - name: Delete existing GitHub Pages artifact
+        run: |
+          gh api -X DELETE /repos/${{ github.repository }}/actions/artifacts --jq '.artifacts[] | select(.name == "github-pages") | .id' | xargs -I {} gh api -X DELETE /repos/${{ github.repository }}/actions/artifacts/{}
+
       #👇 Add Storybook build and deploy to GitHub Pages as a step in the workflow
       - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
         with:
