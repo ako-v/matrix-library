@@ -13,6 +13,8 @@ permissions:
 # List of jobs
 jobs:
   deploy:
+    environment:
+      name: github-pages
     runs-on: ubuntu-latest
     # Job steps
     steps:
@@ -28,6 +30,8 @@ jobs:
       - name: Delete existing GitHub Pages artifact
         run: |
           gh api -X DELETE /repos/${{ github.repository }}/actions/artifacts --jq '.artifacts[] | select(.name == "github-pages") | .id' | xargs -I {} gh api -X DELETE /repos/${{ github.repository }}/actions/artifacts/{}
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       #👇 Add Storybook build and deploy to GitHub Pages as a step in the workflow
       - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
