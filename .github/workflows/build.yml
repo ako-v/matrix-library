@@ -35,7 +35,7 @@ jobs:
           git switch -c dist
 
           # Remove all files except dist folder and package.json
-          find . -maxdepth 1 ! -name 'dist' ! -name 'package.json' ! -name '.' | xargs rm -rf
+          find . -maxdepth 1 ! -name 'dist' ! -name 'package.json' ! -name '.' ! -name .git ! -name .gitignore | xargs rm -rf
 
           # Commit and push changes
           git add .
