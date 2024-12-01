@@ -29,7 +29,10 @@ jobs:
       # Delete existing GitHub Pages artifact
       - name: Delete existing GitHub Pages artifact
         run: |
-          gh api -X DELETE /repos/${{ github.repository }}/actions/artifacts --jq '.artifacts[] | select(.name == "github-pages") | .id' | xargs -I {} gh api -X DELETE /repos/${{ github.repository }}/actions/artifacts/{}
+          artifact_ids=$(gh api -X GET /repos/${{ github.repository }}/actions/artifacts --jq '.artifacts[] | select(.name == "github-pages") | .id')
+          for id in $artifact_ids; do
+            gh api -X DELETE /repos/${{ github.repository }}/actions/artifacts/$id
+          done
         env:
           GH_TOKEN: ${{ github.token }}
 
