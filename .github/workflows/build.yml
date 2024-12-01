@@ -24,8 +24,24 @@ jobs:
       - name: Build library
         run: npm run build
 
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: library-build
-          path: ./dist
+      - name: Push to dist branch
+        run: |
+          # Set up Git user
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Create dist branch if it doesn't exist
+          git fetch origin dist || true
+          git checkout -B dist
+
+          # Remove old files and copy new build
+          git rm -rf . || true
+
+          # copy nessesary files
+          cp -r ./dist/* .
+          cp ./package.json .
+
+          # Commit and push changes
+          git add .
+          git commit -m "Deploy to dist branch"
+          git push origin dist --force
